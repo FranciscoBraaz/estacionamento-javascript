@@ -2,6 +2,7 @@ class Parking {
     constructor(){
         this.list = [];
         this.indexBtnEdit = 0;
+        this.initListStorage();
     }
 
     addCar() {
@@ -15,6 +16,7 @@ class Parking {
         this.resetInputs();
         this.setTable(this.list);
         this.addActions();
+        this.saveListLocalStorage();
     }
 
     addActions(){
@@ -43,6 +45,7 @@ class Parking {
         let parentEl = btn.parentElement;
         parentEl.parentElement.remove();
         this.list.splice(indexBtn-1, 1);
+        this.saveListLocalStorage();
     }
 
     setEdit(indexBtn) {
@@ -62,7 +65,7 @@ class Parking {
         this.list[indexCar - 1].model = model;
         this.list[indexCar - 1].licensePlate = licensePlate;
         this.updateTable(indexCar);
-        
+        this.saveListLocalStorage();
     }
 
     resetInputs() {
@@ -117,6 +120,41 @@ class Parking {
         
         pay.textContent = `R$ ${totalPay},00`;
     }
+
+    saveListLocalStorage(){
+        let listJson = JSON.stringify(this.list);
+        localStorage.setItem('list', listJson);
+    }
+
+    initListStorage() {
+        let listStorage = localStorage.getItem('list');
+        if(listStorage) {
+            this.list = JSON.parse(listStorage);
+            this.list.forEach((car, index) => {
+                this.setInitTable(index);
+                this.addActions();
+            })
+        }   
+    }
+
+    setInitTable(index) {
+        let bodyTable = document.querySelector('.table tbody');
+        let template = document.querySelector('.template').cloneNode(true);
+        let model = this.list[index].model;
+        let licensePlate = this.list[index].licensePlate;
+        let hourEntry = this.list[index].hour;
+
+        template.querySelector('.model').innerHTML = model;
+        template.querySelector('.licensePlate').innerHTML = licensePlate;
+        template.querySelector('.hourEntry').innerHTML = hourEntry;
+        template.classList.remove('hide');
+        bodyTable.appendChild(template);
+    }
+
+    removeAll() {
+        location.reload();
+        localStorage.clear()
+    }
 }
 
 function init() {
@@ -125,6 +163,7 @@ function init() {
     let btnAdd = document.querySelector('.btnConfirm');
     let btnUpdate = document.querySelector('.btnUpdate');
     let btnCancel = document.querySelector('.btnCancel');
+    let btnRemoveAll = document.querySelector('.btnRemoveAll');
     let model = document.querySelector('#modelCar-input');
     let licensePlate = document.querySelector('#licensePlate-input');
 
@@ -153,6 +192,13 @@ function init() {
     btnCancel.addEventListener('click', function(e){
         e.preventDefault();
         parking.cancel();
+    });
+
+    btnRemoveAll.addEventListener('click', function(e){
+        if(confirm("Tem certeza que deseja deletar todos os dados?")){
+            e.preventDefault();
+            parking.removeAll();
+        }
     });
 }
 init();

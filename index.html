@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Estacionamento.js</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <nav class="nav bg-primary menu align-items-center text-dark">
+    <nav class="nav bg-primary menu align-items-center text-light">
         <i class='fas fa-car fa-3x'></i>
         <a class="nav-link" href="#"><h3>Estacionamento.js</h3></a>
     </nav>
@@ -44,7 +44,10 @@
                 <label for="licensePlate">Placa</label>
                 <input type="text" class="form-control" id="licensePlate-input" placeholder="Placa do Carro">
             </div>
-            <button class="btn btn-primary btnConfirm">Confirmar</button>
+            <div class="btnsPrinc">
+              <button class="btn btn-primary btnConfirm">Confirmar</button>
+              <button class="btn btn-danger btnRemoveAll">Apagar todos os dados</button>
+            </div>
             <div class="update">
                 <span><button class="btn btn-primary btnUpdate hide">Salvar</button></span>
                 <span><button class="btn btn-secondary btnCancel hide">Cancelar</button></span>
