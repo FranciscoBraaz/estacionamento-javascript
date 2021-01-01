@@ -1,0 +1,90 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu {
+    height: 80px;
+}
+
+.menu > i {
+    size: 5px;
+    margin-left: 50px;
+    padding: 10px;
+    border: 2px solid rgba(0, 0, 0, 0);
+    transform: .5s;
+    margin-right: 5px;
+}
+
+.menu h3 {
+    color: rgb(52, 58, 64);
+}
+
+.menu h3:hover {
+    color: rgb(248, 249, 250);
+}
+
+.menu > i:hover {
+    border: 2px solid  rgb(248, 249, 250);
+    border-radius: 40px;
+    color: rgb(248, 249, 250);
+}
+
+.registerCar {
+    border: 1px solid rgb(248, 249, 250);
+    margin-top: 30px;
+}
+
+.registerCar-form { 
+    padding: 40px 20px;
+}
+
+.tableCars {
+    margin-top: 10px;
+}
+
+.fa-edit, .fa-trash {
+    border: 1px solid rgba(0, 0, 0, 0);
+    text-decoration: none;
+}
+
+.btn-trash {
+    transform: .5s;
+}
+
+.btn-trash:hover {
+    color: red;
+}
+
+.btn-edit{
+    transform: .5s;
+}
+
+.btn-edit:hover {
+    color: rgb(0, 123, 255);
+}
+
+.hide {
+    display: none;
+}
+
+.totalPay > span {
+    color: rgb(40, 167, 69);
+}
+
+@media only screen and (max-width: 390px){
+    .menu > a > h3 {
+        font-size: 24px;
+    }
+
+    .menu > i {
+        margin-left: 20px;
+    }
+}
+
+@media only screen and (max-width: 355px){
+    .menu > i {
+        display: none;
+    }
+}
