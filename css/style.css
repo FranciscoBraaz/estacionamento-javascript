@@ -78,7 +78,7 @@
 }
 
 .totalPay > span {
-    color: rgb(40, 167, 69);
+    color: gray;
 }
 
 @media only screen and (max-width: 390px){
